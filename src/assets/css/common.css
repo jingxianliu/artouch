@@ -1,0 +1,197 @@
+  
+
+body{margin: 0px;}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 5px;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+/*搜索框*/
+ .search-input{width: 200px;}
+
+
+   .font-size-12{
+     font-size: 12px;
+   }
+
+   .font-size-18{
+    font-size: 18px;
+  }
+
+   .font-size-24{
+    font-size: 24px;
+   }
+   .margin-bottom-10{
+    margin-bottom: 10px;
+   }
+   .margin-bottom-20{
+    margin-bottom: 20px;
+   }
+   .margin-top-5{
+    margin-top: 5px;
+   }
+   .margin-top-10{
+    margin-top: 10px;
+   }
+   .margin-top-20{
+    margin-top: 20px;
+   }
+
+   .align-center{
+     text-align: center;
+   }
+
+  
+
+   .inline-block-text{
+    display: inline-block;
+  }
+
+  .width-100{
+      width: 100px;
+  }
+   .width-150{
+      width: 150px;
+  }
+
+ 
+
+  .flex{
+    display: flex;
+  }
+
+  .flex-between{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .flex-between-center{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  
+  }
+
+
+  .el-dropdown-link {
+    cursor: pointer;
+    color: #409EFF;
+  }
+  .el-icon-arrow-down {
+    font-size: 12px;
+  }
+
+
+
+  .circle:before{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #F5F5F5;
+    position: absolute;
+    content:''
+  }
+
+  .circle span{
+      margin-left: 30px;
+  }
+
+  .circle-1:before{
+      background-color: #FF9900;
+  }
+  .circle-2:before{
+      background-color: #258EDF;
+  }
+  .circle-3:before{
+      background-color: #4ECB73;
+  }
+  .circle-4:before{
+      background-color: #FAEA17;
+  }
+
+ 
+
+  /**********设备列表*******************
+  
+  1.组织管理详情页面
+  2.app详情页面
+  
+  ********************/
+  .device-list{
+    display: flex;
+  }
+  .device-item{
+    width: 180px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.device-item-sn{
+    width: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    color: #ccc;
+    text-align: center;
+}
+
+/********************App Icon图标样式********************************/
+.icon-img{
+  width: 80px;
+  height: 80px;
+}
+
+.content-img{
+  width: 200px;
+  height: 200px;
+}
+
+/**********表格内容项（左图片，右上名称，右下描述）*************************
+1.内容管理列表
+2.素材列表
+**********************************************/
+.content-item{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.content-item-img{
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+}
+.content-item-desc{
+  color:#858585
+}
+/****************素材图片列表*******/
+.img-box{
+  display:flex;
+  flex-wrap: wrap;
+  max-height: 500px;
+  overflow-y: auto
+}
+.img-item{
+  padding: 10px;
+  display: inline-block;
+  width: 16.66%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  vertical-align: top;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} 
