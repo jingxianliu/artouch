@@ -3,9 +3,10 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 const webpack = require('webpack')
+const HappyPack = require('happypack')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -32,6 +33,13 @@ module.exports = {
       '@': resolve('src'),
     }
   },
+  // externals: {
+  //   'vue': 'Vue',
+  //   'vue-router': 'VueRouter',
+  //   'vuex': 'Vuex',
+  //   'axios': 'axios',
+  //   'echarts': 'echarts'
+  // },
 
   optimization: {
     splitChunks: {
@@ -52,13 +60,22 @@ module.exports = {
         loader: 'vue-loader',
         options: vueLoaderConfig
       },
+
+      //Does the latest version of vue-loader 15.1 support happypack #1339
+
+      // {
+      //   test: /\.vue$/,
+      //   loader: 'happypack/loader?id=vue',
+      // },
     
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        // include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')],
+       // loader: 'babel-loader',
+       //把对.js文件的处理交给id为babel的HappyPack实例
+        use:['happypack/loader?id=babel'],
         include: [resolve('src'), resolve('test')],
-        exclude:/node_modules/ 
+        //派出node_modules目录下的文件（都是用ES5语法，没必要转换）
+        exclude:path.resolve(__dirname,'node_modules')
       },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
@@ -118,5 +135,32 @@ module.exports = {
       context: path.resolve(__dirname, '..'),
       manifest: path.resolve(__dirname, '../static/js', 'vendor-manifest.json')
     }),
+    new HappyPack({
+      id:'babel',
+      loaders:['babel-loader?cacheDirectory']
+    }),
+    // new HappyPack({
+    //   id:'vue',
+    //   loaders:[
+    //     {
+    //       loader:'vue-loader',
+    //       cacheDirectory:true,
+    //       option:vueLoaderConfig
+    //     }
+    //   ]
+    // }),
+    
+    // new UglifyJsPlugin({
+    //   uglifyOptions:{
+    //       compress:{
+    //       warnings: false,
+    //       }
+    //   },
+    //   sourceMap: false,
+    //   parallel: true , // 并行处理打包文件
+    //   cache: true, // 使用缓存
+    // })
+
+
   ]
 }
